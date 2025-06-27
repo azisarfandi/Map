@@ -24,8 +24,58 @@
         }
         </style>
         <title></title>
+    <head>
+    <style>
+        html, body, #map {
+            width: 100%;
+            height: calc(100% - 60px);
+            padding: 0;
+            margin: 0;
+        }
+        header {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header-wrapper h1 {
+            font-size: 1.5rem;
+            font-family: Calibri, sans-serif;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+        .header-wrapper .logo {
+            height: 40px;
+        }
+        @media (max-width: 600px) {
+            html, body, #map {
+                height: calc(100% - 100px);
+            }
+            .header-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .header-wrapper .logo {
+                margin-top: 10px;
+            }
+        }
+    </style>
     </head>
     <body>
+        <header>
+            <div class="header-wrapper">
+                <h1>Peta Digital Site RMGM</h1>
+                <img src="logo-riung.png" alt="Logo" class="logo">
+            </div>
+        </header>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
