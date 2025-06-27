@@ -16,60 +16,73 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        <title></title>
-    <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        html, body, #map {
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            background-color: #f8f9fa;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .header-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .header-wrapper h1 {
-            font-size: 1.5rem;
-            font-family: Calibri, sans-serif;
-            font-weight: bold;
-            color: #333;
-            margin: 0;
-        }
-        .header-wrapper .logo {
-            height: 40px;
-        }
-        @media (max-width: 600px) {
-            html, body, #map {
-                height: calc(100% - 100px);
-            }
-            .header-wrapper {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-            }
-            .header-wrapper .logo {
-                margin-top: 10px;
-            }
-        }
-    </style>
+  /* 1) Flex‐column layout untuk body + map */
+  html, body, #map {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 2) Header baris tunggal */
+  header {
+    flex: none;
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 3) Wrapper full‐width & flex row */
+  .header-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  /* 4) Judul di kiri */
+  .header-wrapper h1 {
+    font-size: 1.25rem;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    color: #333;
+    margin: 0;            /* buang margin default */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 5) Logo selalu di kanan */
+  .header-wrapper .logo {
+    margin-left: auto;    /* dorong ke ujung kanan */
+    height: 32px;
+    width: auto;
+  }
+
+  /* 6) Responsif mobile */
+  @media (max-width: 480px) {
+    header {
+      padding: 6px 12px;
+    }
+    .header-wrapper h1 {
+      font-size: 1rem;
+    }
+    /* Untuk map, biarkan flex:1 mengambil sisa */
+    html, body, #map {
+      height: 100vh;
+    }
+    /* Pastikan tetap row, agar logo & judul di satu baris */
+    .header-wrapper {
+      flex-direction: row;
+      text-align: left;
+    }
+    .header-wrapper .logo {
+      height: 28px;
+      margin-left: auto;
+    }
+  }
+</style>
     <body>
         <header>
             <div class="header-wrapper">
